@@ -6,10 +6,13 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -17,6 +20,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -27,6 +31,9 @@ import coil.compose.AsyncImage
 import com.example.desafiofenoxtec.Presentation.NewsListViewModel
 import com.example.desafiofenoxtec.Presentation.NewsRemoteState
 import com.example.desafiofenoxtec.Presentation.Screen
+import com.example.desafiofenoxtec.ui.theme.brown
+import com.example.desafiofenoxtec.ui.theme.brown_2
+import com.example.desafiofenoxtec.ui.theme.pink_100
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 
@@ -53,26 +60,40 @@ fun NewsListCard(
 
             Column {
                 LazyColumn(
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                    verticalArrangement = Arrangement.spacedBy(5.dp),
 
-                ) {
+
+                    ) {
 
                     items(
                         newsListDataBase
 
                     ) { newsItem ->
 
-                        Row(modifier = Modifier.clickable {
+                        Row(
+                            modifier = Modifier
 
-                            navController.navigate(Screen.Detail.createRoute(newsItem.id.toString()))
-                        }) {
 
-                            Column {
+                                .clickable {
+
+                                    navController.navigate(Screen.Detail.createRoute(newsItem.id.toString()))
+                                }) {
+
+                            Column(
+
+                            ) {
 
                                 Row(
                                     verticalAlignment = Alignment.CenterVertically,
+                                    modifier = Modifier
+                                        .background(
+                                            color = pink_100,
+                                            RoundedCornerShape(topEnd = 10.dp, topStart = 10.dp))
+                                        .clip(RoundedCornerShape(topEnd = 10.dp, topStart = 10.dp))
+                                        .padding(start = 20.dp, end = 20.dp)
 
-                                    ) {
+
+                                ) {
 
                                     AsyncImage(
                                         model = newsItem.image,
@@ -82,7 +103,7 @@ fun NewsListCard(
 
                                     Text(
                                         text = newsItem.titulo,
-                                        color = Color.Black,
+                                        color = brown,
                                         fontSize = 13.sp,
                                         fontWeight = FontWeight.Bold,
                                         textAlign = TextAlign.Justify,
@@ -92,17 +113,27 @@ fun NewsListCard(
                                 }
 
                                 Text(
-                                    text = newsItem.introducao,
+                                    text = newsItem.introducao.take(150)+"...",
                                     style = MaterialTheme.typography.bodySmall,
-                                    color = Color.Black,
+                                    color = brown_2,
                                     textAlign = TextAlign.Justify,
+                                    modifier = Modifier
+                                        .background(
+                                            color = pink_100,
+                                            RoundedCornerShape(bottomEnd = 10.dp, bottomStart = 10.dp)
+                                        )
+                                        .clip(RoundedCornerShape(bottomEnd = 10.dp, bottomStart = 10.dp))
+                                        .padding(start = 20.dp, end = 20.dp, bottom = 5.dp)
                                 )
                                 Text(
                                     text = newsItem.data_publicacao,
                                     style = MaterialTheme.typography.bodySmall,
-                                    color = Color.Black,
-                                    modifier = Modifier.padding(top = 5.dp),
-                                    )
+                                    color = brown_2,
+                                    modifier = Modifier
+                                        .padding(top = 5.dp, start = 20.dp)
+
+                                    ,
+                                )
 
 
                             }

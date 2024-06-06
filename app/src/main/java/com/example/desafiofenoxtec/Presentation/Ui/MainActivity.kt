@@ -6,12 +6,15 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.viewModels
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -26,6 +29,9 @@ import com.example.desafiofenoxtec.Presentation.AppNavGraph
 import com.example.desafiofenoxtec.Presentation.NewsListViewModel
 
 import com.example.desafiofenoxtec.ui.theme.DesafioFenoxTecTheme
+import com.example.desafiofenoxtec.ui.theme.brown
+import com.example.desafiofenoxtec.ui.theme.pink_300
+import com.example.desafiofenoxtec.ui.theme.pink_500
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -33,7 +39,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val newsListViewModel: NewsListViewModel by viewModels()
-    private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
 
 
     @OptIn(ExperimentalMaterial3Api::class)
@@ -42,9 +47,6 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
 
        newsListViewModel.getNewsList()
-
-
-        
 
         
         setContent {
@@ -55,21 +57,34 @@ class MainActivity : ComponentActivity() {
 
             DesafioFenoxTecTheme {
 
-
                 Scaffold(
-                    topBar = {
-                        TopAppBar(
 
-                            colors = TopAppBarDefaults.mediumTopAppBarColors(
-                                containerColor = Color.Black
-                            ), title = {
-                                Text(
-                                    text = "News List",
-                                    fontSize = 20.sp,
-                                    fontWeight = FontWeight.ExtraBold,
-                                    color = Color.White,
-                                )
-                            })
+                    topBar = {
+
+                        Surface(
+                            shape = RoundedCornerShape(bottomEnd =5.dp, bottomStart = 5.dp)
+                        ) {
+                            TopAppBar(
+
+                                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                                    containerColor = pink_300
+
+
+
+                                ),
+
+
+                                title = {
+                                    Text(
+                                        text = "News",
+                                        fontSize = 20.sp,
+                                        fontWeight = FontWeight.ExtraBold,
+                                        color = brown,
+                                    )
+                                })
+
+                        }
+
                     },
 
                     ) { innerPadding ->
