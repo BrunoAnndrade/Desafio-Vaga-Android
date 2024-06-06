@@ -7,21 +7,21 @@ Aplicativo de desafio para vaga Android.
 
 ## Como Rodar o aplicativo:
 
-* Passo 1: Clone o Repositório do GitHub
+### Passo 1: Clone o Repositório do GitHub
 
 - Abra o terminal ou prompt de comando.
 - Navegue até o diretório onde você deseja clonar o repositório.
 - Use o comando git clone seguido pelo URL do repositório do GitHub. Por exemplo: bash Copiar código git clone https://github.com/usuario/nome-do-repositorio.git
 - Pressione Enter para clonar o repositório para o seu ambiente local.
 
-* Passo 2: Abra o Projeto no Android Studio
+### Passo 2: Abra o Projeto no Android Studio
 
 - Abra o Android Studio.
 - No menu principal, selecione "File" (Arquivo) -> "Open" (Abrir).
 - Navegue até o diretório onde você clonou o repositório do GitHub.
 - Selecione o diretório do projeto e clique em "Open" (Abrir).
 
-*Passo 3: Execute o Aplicativo no Emulador
+### Passo 3: Execute o Aplicativo no Emulador
 
 - Aguarde o Android Studio carregar o projeto.
 - No canto inferior direito, selecione o dispositivo de emulador que deseja usar.
