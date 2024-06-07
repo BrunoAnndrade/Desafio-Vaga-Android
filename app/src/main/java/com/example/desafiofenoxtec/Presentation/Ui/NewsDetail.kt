@@ -34,8 +34,7 @@ fun NewsDetail(
     Column(
         modifier = Modifier
             .background(color = pink_100)
-            .padding(10.dp)
-            ,
+            .padding(10.dp),
         verticalArrangement = Arrangement.spacedBy(5.dp),
 
     ) {
@@ -47,9 +46,7 @@ fun NewsDetail(
             textAlign = TextAlign.Justify,
             lineHeight = 18.sp,
             modifier = Modifier.padding(top = 10.dp, start = 10.dp, end = 10.dp)
-
         )
-
 
         AsyncImage(
             model = newsResponse.getImageUrl(),
@@ -57,18 +54,16 @@ fun NewsDetail(
             modifier = Modifier
                 .size(200.dp)
                 .align(Alignment.CenterHorizontally)
-
         )
+
         Text(
             text = newsResponse.introducao,
-
             fontSize = 15.sp,
             color = brown_2,
             textAlign = TextAlign.Justify,
             lineHeight = 18.sp,
             modifier = Modifier.padding(start = 10.dp, end = 10.dp)
-
-            )
+        )
 
         Text(
             text = newsResponse.data_publicacao,
@@ -77,12 +72,6 @@ fun NewsDetail(
             textAlign = TextAlign.Start,
             lineHeight = 18.sp,
             modifier = Modifier.padding(top=10.dp, start = 10.dp, bottom = 10.dp)
-
-
-            )
-
-
+        )
     }
-
-
 }

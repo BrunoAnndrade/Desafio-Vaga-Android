@@ -40,20 +40,15 @@ class MainActivity : ComponentActivity() {
 
     private val newsListViewModel: NewsListViewModel by viewModels()
 
-
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
        newsListViewModel.getNewsList()
-
         
         setContent {
-
             val navController = rememberNavController()
-
-
 
             DesafioFenoxTecTheme {
 
@@ -65,14 +60,7 @@ class MainActivity : ComponentActivity() {
                             shape = RoundedCornerShape(bottomEnd =5.dp, bottomStart = 5.dp)
                         ) {
                             TopAppBar(
-
-                                colors = TopAppBarDefaults.mediumTopAppBarColors(
-                                    containerColor = pink_300
-
-
-
-                                ),
-
+                                colors = TopAppBarDefaults.mediumTopAppBarColors(containerColor = pink_300),
 
                                 title = {
                                     Text(
@@ -81,10 +69,9 @@ class MainActivity : ComponentActivity() {
                                         fontWeight = FontWeight.ExtraBold,
                                         color = brown,
                                     )
-                                })
-
+                                }
+                            )
                         }
-
                     },
 
                     ) { innerPadding ->
@@ -93,28 +80,21 @@ class MainActivity : ComponentActivity() {
                             .fillMaxSize()
                             .padding(innerPadding)
 
-
                     ) {
                         Column(
                             modifier = Modifier
                                 .padding(top = 10.dp)
-                                .fillMaxSize()
-
-                                ,
-
+                                .fillMaxSize(),
 
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
-                            // Call your custom NavGraph composable
+
                             AppNavGraph(navController = navController, state = newsListViewModel.state)
-
                         }
-
                     }
                 }
             }
         }
     }
-
 }
 

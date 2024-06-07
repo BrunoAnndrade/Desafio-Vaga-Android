@@ -19,13 +19,11 @@ fun AppNavGraph(
 
     NavHost(
         navController = navController,
-        startDestination = Screen.News.route
+        startDestination = navegationScreens.News.route
     ) {
 
-
-
         composable(
-            route = Screen.Detail.route,
+            route = navegationScreens.Detail.route,
             arguments = listOf(navArgument("newsId") { type = NavType.StringType })
         ) { backStackEntry ->
             val newsId = backStackEntry.arguments?.getString("newsId")?.toIntOrNull()
@@ -33,10 +31,9 @@ fun AppNavGraph(
             newsItem?.let {
                 NewsDetail(state, navController, newsItem)
             }
-
         }
 
-        composable(route = Screen.News.route) {
+        composable(route = navegationScreens.News.route) {
             NewsListCard(state,viewModel, navController)
         }
     }

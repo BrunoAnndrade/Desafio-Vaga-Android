@@ -6,8 +6,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -30,7 +28,7 @@ import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.example.desafiofenoxtec.Presentation.NewsListViewModel
 import com.example.desafiofenoxtec.Presentation.NewsRemoteState
-import com.example.desafiofenoxtec.Presentation.Screen
+import com.example.desafiofenoxtec.Presentation.navegationScreens
 import com.example.desafiofenoxtec.ui.theme.brown
 import com.example.desafiofenoxtec.ui.theme.brown_2
 import com.example.desafiofenoxtec.ui.theme.pink_100
@@ -54,45 +52,37 @@ fun NewsListCard(
             modifier = Modifier
                 .padding(16.dp)
                 .background(Color.White)
-
-
         ) {
 
             Column {
+
                 LazyColumn(
                     verticalArrangement = Arrangement.spacedBy(5.dp),
+                ) {
 
-
-                    ) {
-
-                    items(
-                        newsListDataBase
-
-                    ) { newsItem ->
+                    items(newsListDataBase) { newsItem ->
 
                         Row(
                             modifier = Modifier
-
-
                                 .clickable {
-
-                                    navController.navigate(Screen.Detail.createRoute(newsItem.id.toString()))
+                                    navController.navigate(
+                                        navegationScreens.Detail.createRoute(
+                                            newsItem.id.toString()
+                                        )
+                                    )
                                 }) {
 
-                            Column(
-
-                            ) {
+                            Column {
 
                                 Row(
                                     verticalAlignment = Alignment.CenterVertically,
                                     modifier = Modifier
                                         .background(
                                             color = pink_100,
-                                            RoundedCornerShape(topEnd = 10.dp, topStart = 10.dp))
+                                            RoundedCornerShape(topEnd = 10.dp, topStart = 10.dp)
+                                        )
                                         .clip(RoundedCornerShape(topEnd = 10.dp, topStart = 10.dp))
                                         .padding(start = 20.dp, end = 20.dp)
-
-
                                 ) {
 
                                     AsyncImage(
@@ -113,43 +103,41 @@ fun NewsListCard(
                                 }
 
                                 Text(
-                                    text = newsItem.introducao.take(150)+"...",
+                                    text = newsItem.introducao.take(150) + "...",
                                     style = MaterialTheme.typography.bodySmall,
                                     color = brown_2,
                                     textAlign = TextAlign.Justify,
                                     modifier = Modifier
                                         .background(
                                             color = pink_100,
-                                            RoundedCornerShape(bottomEnd = 10.dp, bottomStart = 10.dp)
+                                            RoundedCornerShape(
+                                                bottomEnd = 10.dp,
+                                                bottomStart = 10.dp
+                                            )
                                         )
-                                        .clip(RoundedCornerShape(bottomEnd = 10.dp, bottomStart = 10.dp))
+                                        .clip(
+                                            RoundedCornerShape(
+                                                bottomEnd = 10.dp,
+                                                bottomStart = 10.dp
+                                            )
+                                        )
                                         .padding(start = 20.dp, end = 20.dp, bottom = 5.dp)
                                 )
+
                                 Text(
                                     text = newsItem.data_publicacao,
                                     style = MaterialTheme.typography.bodySmall,
                                     color = brown_2,
                                     modifier = Modifier
-                                        .padding(top = 5.dp, start = 20.dp)
-
-                                    ,
+                                        .padding(top = 5.dp, start = 20.dp),
                                 )
-
-
                             }
-
                         }
-
-
                     }
                 }
-
             }
-
         }
     }
-
-
 }
 
 

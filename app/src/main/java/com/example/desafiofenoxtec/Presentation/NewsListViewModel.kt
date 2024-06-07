@@ -29,11 +29,12 @@ class NewsListViewModel @Inject constructor(
     private val _isRefreshing = MutableStateFlow(false)
     val isRefreshing: StateFlow<Boolean> = _isRefreshing.asStateFlow()
 
+    var state by mutableStateOf(NewsRemoteState())
+        private set
     init {
         viewModelScope.launch {
             loadNewsFromDatabase()
-            startPeriodicDataUpdate()
-
+            getNewsList()
         }
     }
 
@@ -42,19 +43,6 @@ class NewsListViewModel @Inject constructor(
             _newsList.value = itemList
         }
     }
-
-    private fun startPeriodicDataUpdate() {
-        viewModelScope.launch {
-            while (true) {
-                getNewsList() // Obtém as últimas notícias da API e atualiza o banco de dados
-                delay(3600000) // Intervalo de uma hora (em milissegundos) - ajuste conforme necessário
-            }
-        }
-    }
-
-    var state by mutableStateOf(NewsRemoteState())
-        private set
-
     fun getNewsList() {
         viewModelScope.launch {
             state = state.copy(
@@ -65,10 +53,8 @@ class NewsListViewModel @Inject constructor(
             when (val result = repository.getNewsData()) {
                 is Resource.Success -> {
 
-                    // Extrair a lista de NewsItem do NewsResponse
                     val newsItems = result.data?.items
 
-                    // Mapear os NewsItem para NewsEntity
                     val newsEntities = newsItems?.map { newsItem ->
                         NewsEntity(
                             id = newsItem.id,
@@ -76,7 +62,6 @@ class NewsListViewModel @Inject constructor(
                             titulo = newsItem.titulo,
                             data_publicacao = newsItem.data_publicacao,
                             image = newsItem.getImageUrl()
-
                         )
                     }
 
@@ -104,9 +89,5 @@ class NewsListViewModel @Inject constructor(
 
     private suspend fun saveNewsToDataBase(newsList:List<NewsEntity>){
         dataBaseRepository.saveNews(newsList)
-
     }
-
-
-
 }
