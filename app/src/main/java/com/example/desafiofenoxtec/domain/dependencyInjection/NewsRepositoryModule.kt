@@ -1,7 +1,7 @@
-package com.example.desafiofenoxtec.Domain.DependencyInjection
+package com.example.desafiofenoxtec.domain.dependencyInjection
 
-import com.example.desafiofenoxtec.Data.Repository.NewsApiRepository
-import com.example.desafiofenoxtec.Data.Repository.NewsRepositoryImplemetation
+import com.example.desafiofenoxtec.data.repository.NewsApiRepository
+import com.example.desafiofenoxtec.data.repository.NewsRepositoryImplemetation
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

@@ -1,16 +1,15 @@
-package com.example.desafiofenoxtec.Presentation
+package com.example.desafiofenoxtec.presentation
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.desafiofenoxtec.Data.Repository.DataBaseRepository
-import com.example.desafiofenoxtec.Data.Local.NewsEntity
-import com.example.desafiofenoxtec.Data.Repository.NewsApiRepository
-import com.example.desafiofenoxtec.Domain.Util.Resource
+import com.example.desafiofenoxtec.data.repository.DataBaseRepository
+import com.example.desafiofenoxtec.data.local.NewsEntity
+import com.example.desafiofenoxtec.data.repository.NewsApiRepository
+import com.example.desafiofenoxtec.domain.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -89,5 +88,6 @@ class NewsListViewModel @Inject constructor(
 
     private suspend fun saveNewsToDataBase(newsList:List<NewsEntity>){
         dataBaseRepository.saveNews(newsList)
+        dataBaseRepository.updateNews((newsList))
     }
 }

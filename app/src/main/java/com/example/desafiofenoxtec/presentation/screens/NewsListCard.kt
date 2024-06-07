@@ -1,4 +1,4 @@
-package com.example.desafiofenoxtec.Presentation.Ui
+package com.example.desafiofenoxtec.presentation.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -26,9 +26,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
-import com.example.desafiofenoxtec.Presentation.NewsListViewModel
-import com.example.desafiofenoxtec.Presentation.NewsRemoteState
-import com.example.desafiofenoxtec.Presentation.navegationScreens
+import com.example.desafiofenoxtec.presentation.NewsListViewModel
+import com.example.desafiofenoxtec.presentation.NewsRemoteState
+import com.example.desafiofenoxtec.presentation.NavScreens
 import com.example.desafiofenoxtec.ui.theme.brown
 import com.example.desafiofenoxtec.ui.theme.brown_2
 import com.example.desafiofenoxtec.ui.theme.pink_100
@@ -66,7 +66,7 @@ fun NewsListCard(
                             modifier = Modifier
                                 .clickable {
                                     navController.navigate(
-                                        navegationScreens.Detail.createRoute(
+                                        NavScreens.Detail.createRoute(
                                             newsItem.id.toString()
                                         )
                                     )

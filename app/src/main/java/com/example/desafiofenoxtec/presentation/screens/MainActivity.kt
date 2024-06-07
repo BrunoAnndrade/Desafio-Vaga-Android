@@ -1,17 +1,16 @@
-package com.example.desafiofenoxtec.Presentation.Ui
+package com.example.desafiofenoxtec.presentation.screens
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.viewModels
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -20,18 +19,17 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
-import com.example.desafiofenoxtec.Presentation.AppNavGraph
-import com.example.desafiofenoxtec.Presentation.NewsListViewModel
+import com.example.desafiofenoxtec.presentation.AppNavGraph
+import com.example.desafiofenoxtec.presentation.NewsListViewModel
 
 import com.example.desafiofenoxtec.ui.theme.DesafioFenoxTecTheme
 import com.example.desafiofenoxtec.ui.theme.brown
 import com.example.desafiofenoxtec.ui.theme.pink_300
-import com.example.desafiofenoxtec.ui.theme.pink_500
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -83,13 +81,20 @@ class MainActivity : ComponentActivity() {
                     ) {
                         Column(
                             modifier = Modifier
-                                .padding(top = 10.dp)
-                                .fillMaxSize(),
+                                .padding(10.dp)
+                                .fillMaxSize()
+                                .clip(RoundedCornerShape(10.dp)),
 
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
 
                             AppNavGraph(navController = navController, state = newsListViewModel.state)
+                        }
+
+                        if (newsListViewModel.state.isLoading){
+                            CircularProgressIndicator(
+                                modifier = Modifier.align(Alignment.Center)
+                            )
                         }
                     }
                 }

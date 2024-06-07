@@ -1,6 +1,6 @@
-package com.example.desafiofenoxtec.Presentation
+package com.example.desafiofenoxtec.presentation
 
-import com.example.desafiofenoxtec.Data.Remote.NewsResponse
+import com.example.desafiofenoxtec.data.remote.NewsResponse
 
 data class NewsRemoteState(
     val newsResponse:NewsResponse? = null,

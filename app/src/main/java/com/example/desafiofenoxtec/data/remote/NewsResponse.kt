@@ -1,4 +1,4 @@
-package com.example.desafiofenoxtec.Data.Remote
+package com.example.desafiofenoxtec.data.remote
 
 import android.os.Parcelable
 import com.google.gson.Gson
@@ -8,7 +8,6 @@ import kotlinx.parcelize.Parcelize
 data class NewsResponse(
     val items: List<NewsItem>
 ) {
-
     @Parcelize
     data class NewsItem(
         val id: Int,
@@ -24,7 +23,6 @@ data class NewsResponse(
             return "https://agenciadenoticias.ibge.gov.br/${imagem?.imageIntro}"
         }
     }
-
     data class Imagem(
         @SerializedName("image_intro") val imageIntro: String,
         @SerializedName("image_fulltext") val imageFulltext: String

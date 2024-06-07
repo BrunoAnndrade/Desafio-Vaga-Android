@@ -1,9 +1,9 @@
-package com.example.desafiofenoxtec.Domain.DependencyInjection
+package com.example.desafiofenoxtec.domain.dependencyInjection
 
 import android.content.Context
 import androidx.room.Room
-import com.example.desafiofenoxtec.Data.Local.AppDataBase
-import com.example.desafiofenoxtec.Data.Local.NewsEntity
+import com.example.desafiofenoxtec.data.local.AppDataBase
+import com.example.desafiofenoxtec.data.local.NewsEntity
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

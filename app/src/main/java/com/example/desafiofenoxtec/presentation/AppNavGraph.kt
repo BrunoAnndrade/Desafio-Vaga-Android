@@ -1,4 +1,4 @@
-package com.example.desafiofenoxtec.Presentation
+package com.example.desafiofenoxtec.presentation
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -7,8 +7,8 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.desafiofenoxtec.Presentation.Ui.NewsDetail
-import com.example.desafiofenoxtec.Presentation.Ui.NewsListCard
+import com.example.desafiofenoxtec.presentation.screens.NewsDetail
+import com.example.desafiofenoxtec.presentation.screens.NewsListCard
 
 @Composable
 fun AppNavGraph(
@@ -19,21 +19,21 @@ fun AppNavGraph(
 
     NavHost(
         navController = navController,
-        startDestination = navegationScreens.News.route
+        startDestination = NavScreens.News.route
     ) {
 
         composable(
-            route = navegationScreens.Detail.route,
+            route = NavScreens.Detail.route,
             arguments = listOf(navArgument("newsId") { type = NavType.StringType })
         ) { backStackEntry ->
             val newsId = backStackEntry.arguments?.getString("newsId")?.toIntOrNull()
             val newsItem = state.newsResponse?.items?.find { it.id == newsId }
             newsItem?.let {
-                NewsDetail(state, navController, newsItem)
+                NewsDetail( newsItem,viewModel)
             }
         }
 
-        composable(route = navegationScreens.News.route) {
+        composable(route = NavScreens.News.route) {
             NewsListCard(state,viewModel, navController)
         }
     }

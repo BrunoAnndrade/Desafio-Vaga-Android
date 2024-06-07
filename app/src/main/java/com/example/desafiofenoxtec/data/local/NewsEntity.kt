@@ -1,4 +1,4 @@
-package com.example.desafiofenoxtec.Data.Local
+package com.example.desafiofenoxtec.data.local
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -11,5 +11,4 @@ data class NewsEntity(
     val introducao:String = "",
     val data_publicacao:String = "",
     val image:String = ""
-
 )

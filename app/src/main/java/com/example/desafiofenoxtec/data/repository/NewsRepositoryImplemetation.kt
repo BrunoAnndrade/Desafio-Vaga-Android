@@ -1,8 +1,8 @@
-package com.example.desafiofenoxtec.Data.Repository
+package com.example.desafiofenoxtec.data.repository
 
-import com.example.desafiofenoxtec.Data.Remote.NewsApi
-import com.example.desafiofenoxtec.Data.Remote.NewsResponse
-import com.example.desafiofenoxtec.Domain.Util.Resource
+import com.example.desafiofenoxtec.data.remote.NewsApi
+import com.example.desafiofenoxtec.data.remote.NewsResponse
+import com.example.desafiofenoxtec.domain.util.Resource
 import javax.inject.Inject
 
 class NewsRepositoryImplemetation @Inject constructor(

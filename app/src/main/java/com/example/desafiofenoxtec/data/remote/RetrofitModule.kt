@@ -1,4 +1,4 @@
-package com.example.desafiofenoxtec.Data.Remote
+package com.example.desafiofenoxtec.data.remote
 
 import com.google.gson.Gson
 import dagger.Module

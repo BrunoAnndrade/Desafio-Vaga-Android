@@ -1,41 +1,41 @@
-package com.example.desafiofenoxtec.Presentation.Ui
+package com.example.desafiofenoxtec.presentation.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
-import com.example.desafiofenoxtec.Data.Remote.NewsResponse
-import com.example.desafiofenoxtec.Presentation.NewsRemoteState
+import com.example.desafiofenoxtec.data.remote.NewsResponse
+import com.example.desafiofenoxtec.presentation.NewsListViewModel
 import com.example.desafiofenoxtec.ui.theme.brown
 import com.example.desafiofenoxtec.ui.theme.brown_2
 import com.example.desafiofenoxtec.ui.theme.pink_100
 
 @Composable
 fun NewsDetail(
-    state: NewsRemoteState,
-    navController: NavHostController,
-    newsResponse: NewsResponse.NewsItem
+    newsResponse: NewsResponse.NewsItem,
+    viewModel: NewsListViewModel
 ) {
 
     Column(
         modifier = Modifier
             .background(color = pink_100)
-            .padding(10.dp),
+            .padding(10.dp)
+            .clip(RoundedCornerShape(10.dp)),
         verticalArrangement = Arrangement.spacedBy(5.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
 
     ) {
         Text(
@@ -73,5 +73,8 @@ fun NewsDetail(
             lineHeight = 18.sp,
             modifier = Modifier.padding(top=10.dp, start = 10.dp, bottom = 10.dp)
         )
+        if (viewModel.state.isLoading){
+            CircularProgressIndicator()
+        }
     }
 }
