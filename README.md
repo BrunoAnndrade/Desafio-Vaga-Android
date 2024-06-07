@@ -6,6 +6,7 @@ Aplicativo de desafio para vaga Android.
 <img src="/result/imagem1.png" width="260">&emsp;<img src="/result/imagem2.png" width="260">&emsp;
 
 ## Como Rodar o aplicativo:
+- Apk disponivel na aba release para instalação do app. 
 
 ### Passo 1: Clone o Repositório do GitHub
 
