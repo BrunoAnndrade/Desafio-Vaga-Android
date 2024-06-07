@@ -11,7 +11,7 @@ Aplicativo de desafio para vaga Android.
 
 - Abra o terminal ou prompt de comando.
 - Navegue até o diretório onde você deseja clonar o repositório.
-- Use o comando git clone seguido pelo URL do repositório do GitHub. Por exemplo: bash Copiar código git clone https://github.com/usuario/nome-do-repositorio.git
+- Use o comando git clone seguido pelo URL do repositório do GitHub. Por exemplo: bash Copiar código git clone https://github.com/BrunoAnndrade/DesafioFenoxTec.git
 - Pressione Enter para clonar o repositório para o seu ambiente local.
 
 ### Passo 2: Abra o Projeto no Android Studio
